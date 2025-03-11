@@ -1,0 +1,481 @@
+\documentclass[titlepage]{article} % Aquí creamos el tipo de documento, en este caso artículo y en a4paper determina el tamaño de la hoja, esto para insertar la portada que hicimos en el pdf
+
+% Todas las librerías que vamos a usar------------------------------
+\usepackage{graphicx}
+\usepackage{bookman}
+\usepackage{pdfpages}
+\usepackage{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[spanish]{babel}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{array}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\geometry{margin=1.5cm}
+%-------------------------------------------------------------------
+
+% Definir colores personalizados -----------------------------------
+\definecolor{headercolor}{RGB}{0, 76, 153}   % Azul oscuro (Fondo del encabezado)
+\definecolor{footercolor}{RGB}{50, 50, 50}   % Gris oscuro (Fondo del pie de página)
+\definecolor{highlightcolor}{RGB}{19, 7, 245} % Azul (Color del resaltado)
+%-------------------------------------------------------------------
+
+% Texto resaltado en el encabezado----------------------------------
+\fancyhead[L]{\colorbox{highlightcolor}{\textcolor{white}{Examen I}}}
+\fancyhead[R]{\colorbox{highlightcolor}{\textcolor{white}{FES Acatlán - UNAM}}}
+%-------------------------------------------------------------------
+
+% Texto resaltado en el pie de página ------------------------------
+\fancyfoot[L]{\colorbox{highlightcolor}{\textcolor{white}{Probabilidad}}}
+\fancyfoot[C]{\colorbox{highlightcolor}{\textcolor{white}{Semestre 2025 - 2}}}
+\fancyfoot[R]{\colorbox{highlightcolor}{\textcolor{white}{Página \thepage}}}
+%-------------------------------------------------------------------
+
+% Elimina la línea del encabezado y pie de página ----------------- 
+\renewcommand{\headrulewidth}{0pt} % Elimina la línea del encabezado
+\renewcommand{\footrulewidth}{0pt} % Elimina la línea del pie de página
+%-------------------------------------------------------------------
+
+% Esta opción habilita los links cliqueables dentro del documento
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=cyan} % linkcolor es para los links dentro de los documetos y así ponerlos en el índice, urlcolor es para los links externos (YouTube, Facebook, páginas web, etc.)
+%-------------------------------------------------------------------
+
+\begin{document}
+
+    \begin{titlepage}
+        \centering
+        
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.4\textwidth]{logo_unam_negro.png}  % Primer logo
+        \end{minipage}%
+        \hfill  % Esto pone un espacio flexible entre los logos
+        \begin{minipage}{0.3\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{MAC_FESACATLAN.eps}  % Segundo logo
+        \end{minipage}
+
+        \vspace{1cm}
+
+        {\scshape\LARGE Universidad Nacional Autónoma de México \par}
+        \vspace{0.7cm}
+
+        {\scshape\Large Facultad de Estudios Superiores Acatlán \\ \par}
+        \vspace{0.7cm}
+        {\scshape\Large División de Matemáticas e Ingeniería\par}
+        \vspace{0.7cm}
+        {\scshape\Large Licenciatura en Matemáticas Aplicadas y Computación\par}
+        \vspace{0.7cm}
+        {\scshape\Large Asignatura: Probabilidad\par}
+        \vspace{0.7cm}
+        {\scshape\Large Profesora: Luz María Lavín Alanís\\}
+        \vspace{0.7cm}
+        {\scshape\Large Adjuntos:\\Alberto Gómez Méndez \\Rodrigo Regalado Herrera \\Iñaki Arroyo Rubio \\David Reboyo Cruz}
+        \vspace{1.1cm}
+
+        {\huge\bfseries Examen I \\ Primer Parcial\par}
+        \vspace{1.1cm}
+
+        {\Large\itshape Integrantes: \\ Cristian Michel Zarazua Castañeda \\
+        Jonathan Alexis Flores González \\
+        Luis Daniel Gutiérrez Baeza \\
+        María Biaanni Velasco Pichardo \\
+        Yahir Alexis Ocegueda Cortés\par}
+    \end{titlepage}
+    
+    \restoregeometry % Reinicia el margen determinado en el preámbulo en las demás páginas
+
+    \setcounter{page}{1}  % Reinicia la numeración de páginas
+
+    \newpage
+
+    \Large
+
+    \section*{\Large Problema 1}
+    \addcontentsline{toc}{section}{\Large Problema 1\\}
+
+\Large Sean $A$ y $B$ dos eventos con $P(A) = \frac{1}{3}$, $P(A \cup B) = \frac{1}{2}$, $P(A \cap B) = \frac{1}{12}$. Calcular mediante axiomas: 
+
+\begin{enumerate}
+    \item $P(B - A)$
+    \item $P(A^{c} - B)$
+    \item $P(A \setminus B^{c})$
+\end{enumerate}
+
+\subsection*{\Large Solución}
+
+\Large
+\textbf{Datos:}  
+Nos dan las siguientes probabilidades:
+
+\[
+P(A) = \frac{1}{3}, \quad P(A \cup B) = \frac{1}{2}, \quad P(A \cap B) = \frac{1}{12}
+\]
+
+Ahora vamos a calcular los siguientes puntos.
+
+\section*{1. Calcular \( P(B - A) \)}
+
+\( P(B - A) \) es la probabilidad de que ocurra \( B \) pero **sin que ocurra \( A \)**, lo que corresponde a \( P(B \cap A^c) \), es decir, la probabilidad de que ocurra \( B \) y **no ocurra \( A \)**.
+
+Sabemos que:
+
+\[
+P(B) = P(B \cap A) + P(B \cap A^c)
+\]
+
+Por lo tanto, la probabilidad \( P(B \cap A^c) \) es:
+
+\[
+P(B \cap A^c) = P(B) - P(A \cap B)
+\]
+
+Ahora, para calcular \( P(B) \), usamos la fórmula de la probabilidad de la unión de dos eventos \( A \cup B \):
+
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+
+Sustituyendo los valores conocidos:
+
+\[
+\frac{1}{2} = \frac{1}{3} + P(B) - \frac{1}{12}
+\]
+
+Despejamos \( P(B) \):
+
+\[
+P(B) = \frac{1}{2} - \frac{1}{3} + \frac{1}{12}
+\]
+
+Para resolver, encontramos un denominador común (12) y sumamos:
+
+\[
+P(B) = \frac{6}{12} - \frac{4}{12} + \frac{1}{12} = \frac{3}{12} = \frac{1}{4}
+\]
+
+Ahora, calculamos \( P(B \cap A^c) \):
+
+\[
+P(B \cap A^c) = \frac{1}{4} - \frac{1}{12} = \frac{3}{12} - \frac{1}{12} = \frac{2}{12} = \frac{1}{6}
+\]
+
+Por lo tanto:
+
+\[
+P(B - A) = \frac{1}{6}
+\]
+
+\section*{2. Calcular \( P(A^c - B) \)}
+
+\( P(A^c - B) \) es la probabilidad de que ocurra **ni \( A \) ni \( B \)**, es decir, \( P(A^c \cap B^c) \), que es el complemento de \( P(A \cup B) \).
+
+Sabemos que:
+
+\[
+P(A^c \cap B^c) = 1 - P(A \cup B)
+\]
+
+Sustituyendo el valor de \( P(A \cup B) \):
+
+\[
+P(A^c \cap B^c) = 1 - \frac{1}{2} = \frac{1}{2}
+\]
+
+Entonces:
+
+\[
+P(A^c - B) = \frac{1}{2}
+\]
+
+\section*{3. Calcular \( P(A \setminus B^c) \)}
+
+\( P(A \setminus B^c) \) es la probabilidad de que ocurra **\( A \) y también ocurra \( B \)**. Esto es simplemente \( P(A \cap B) \), ya que \( A \setminus B^c \) es igual a la intersección \( A \cap B \).
+
+Ya nos dieron que:
+
+\[
+P(A \cap B) = \frac{1}{12}
+\]
+
+Entonces:
+
+\[
+P(A \setminus B^c) = \frac{1}{12}
+\]
+
+    \section*{\Large Problema 2}
+    \addcontentsline{toc}{section}{\Large Problema 2\\}
+
+\Large Se tiene un cubo de madera de pino de 10 cm por lado, se pinta de color blanco y posteriormente se corta en cubitos de 2.5 cm por lado. Los cubitos que se generan se meten en una bolsa, se revuelven y se saca al azar uno de os cubitos.
+
+\begin{enumerate}
+    \item Calcula la probabilidad de que el cubo extraído no esté pintado en ninguna de sus caras.
+    \item ¿Qué es más probable, que tenga una o dos caras pintadas?
+    \item Calcula la probabilidad de que el cubo extraído esté pintado en tres de sus caras. 
+\end{enumerate}
+
+\subsection*{\Large Solución}
+
+\Large
+Se tiene un cubo de madera de pino de 10 cm por lado, se pinta de color blanco y posteriormente se corta en cubitos de 2.5 cm por lado. Los cubitos que se generan se meten en una bolsa, se revuelven y se saca al azar uno de los cubitos.
+
+\begin{enumerate}
+    \item \textbf{Calcula la probabilidad de que el cubo extraído no esté pintado en ninguna de sus caras.}
+    
+    \textbf{Explicación:}  
+    El cubo tiene un lado de 10 cm, y se corta en cubitos de 2.5 cm. Esto nos da un total de \( \frac{10}{2.5} = 4 \) cubitos por lado. El número total de cubitos es \( 4 \times 4 \times 4 = 64 \) cubitos.  
+    Los cubitos que no están pintados en ninguna de sus caras son los cubitos que están en el centro del cubo original. Estos cubitos están completamente rodeados por otros cubitos, por lo que no tienen ninguna cara expuesta. En el centro de un cubo de 4x4x4 (en cada dirección), hay solo un cubito que no tiene caras pintadas.  
+    Por lo tanto, la probabilidad de que el cubito extraído no esté pintado en ninguna de sus caras es:
+    \[
+    P(\text{no pintado}) = \frac{8}{64} = \frac{1}{8}
+    \]
+
+    \item \textbf{¿Qué es más probable, que tenga una o dos caras pintadas?}
+    
+    \textbf{Explicación:}  
+    Un cubito con una cara pintada está en la cara del cubo original, pero no en las aristas ni en las esquinas. Cada cara del cubo tiene \( 4 \times 4 = 16 \) cubitos, pero los de las aristas y las esquinas no cuentan.  
+    Los cubitos con una cara pintada son los que están en el centro de cada cara del cubo, y hay \( (4-2) \times (4-2) = 4 \) cubitos con una cara pintada en cada una de las 6 caras. Por lo tanto, hay un total de 6 cubitos con una cara pintada.  
+    Los cubitos con dos caras pintadas están en las aristas del cubo. Cada arista tiene \( 4-2 = 2 \) cubitos con dos caras pintadas, y hay 12 aristas en total. Por lo tanto, hay 12 cubitos con dos caras pintadas.
+    Las probabilidades son las siguientes:
+    \[
+    P(\text{una cara pintada}) = \frac{6}{64}, \quad P(\text{dos caras pintadas}) = \frac{12}{64}
+    \]
+
+    \item \textbf{Calcula la probabilidad de que el cubo extraído esté pintado en tres de sus caras.}
+    
+    \textbf{Explicación:}  
+    Los cubitos con tres caras pintadas están en las esquinas del cubo original. Hay 8 esquinas en total en el cubo. La probabilidad de que un cubito esté pintado en tres de sus caras es:
+    \[
+    P(\text{tres caras pintadas}) = \frac{8}{64} = \frac{1}{8}
+    \]
+\end{enumerate}
+
+
+    \section*{\Large Problema 3}
+    \addcontentsline{toc}{section}{\Large Problema 3\\}
+
+\Large Regalo estaba jugando tennis, cuando de repente le pega mal a la pelota, y se va directamente al enrejado. Suponiendo que va con una trayectoria perpendicular al enrejado y sufre una deformidad por el golpe:
+
+\begin{enumerate}
+    \item ¿Cuál es la probabilidad de que salga de la cancha?
+    \item Suponiendo que $a = \frac{3}{2} b$, ¿cómo debe de ser $r$ con respecto a $b$ para que la probabilidad de que salga sea menor a $\frac{1}{4}$?
+\end{enumerate}
+
+\subsection*{\Large Solución}
+
+\Large
+Regalo estaba jugando tenis, cuando de repente le pega mal a la pelota, y se va directamente al enrejado. Suponiendo que va con una trayectoria perpendicular al enrejado y sufre una deformidad por el golpe:
+
+\begin{enumerate}
+    \item \textbf{¿Cuál es la probabilidad de que salga de la cancha?}
+    
+    \textbf{Explicación:}  
+    La pelota tiene una forma ovalada con radios \( a \) y \( b \) después del golpe, y el enrejado tiene un tamaño \( r \times r \). La probabilidad de que la pelota salga de la cancha está relacionada con la probabilidad de que la pelota pase a través del enrejado. Esto depende de la relación entre los radios \( a \), \( b \) y el tamaño \( r \) del enrejado.  
+    La probabilidad de que la pelota pase por el enrejado puede expresarse como:
+    
+    \[
+    P(\text{salida}) = \frac{\pi \cdot a \cdot b}{r^2}
+    \]
+    
+    \item \textbf{¿Cómo debe de ser \( r \) con respecto a \( b \) para que la probabilidad de que salga sea menor a \( \frac{1}{4} \)?}
+    
+    \textbf{Explicación:}  
+    Queremos que la probabilidad de que la pelota salga de la cancha sea menor a \( \frac{1}{4} \). Esto nos da la ecuación:
+    
+    \[
+    \frac{\pi \cdot a \cdot b}{r^2} < \frac{1}{4}
+    \]
+    
+    Sustituyendo \( a = \frac{3}{2} b \) en la ecuación, obtenemos:
+    
+    \[
+    \frac{\pi \cdot \frac{3}{2} b^2}{r^2} < \frac{1}{4}
+    \]
+    
+    Resolviendo para \( r \), obtenemos:
+    
+    \[
+    r > \sqrt{6 \pi} b
+    \]
+\end{enumerate}
+
+    \section*{\Large Problema 4}
+    \addcontentsline{toc}{section}{\Large Problema 4\\}
+
+\Large En la FES Acatlán se sabe que el alumnado es 50\% estudiantes de derecho, 20\% estudiantes del área de matemáticas y el 30\% de otras áreas. De igual manera se sabe que el porcentaje de alumnos irregulares es 7\%, 53\% y 15\% respectivamente.
+
+\begin{enumerate}
+    \item ¿Cuál es la probabilidad de ser irregular?
+    \item Si se toma una muestra aleatoria de 100 personas, ¿cuántas serán irregulares?
+    \item ¿Cuál es la probabilidad de que un alumno irregular sea estudiante de derecho?
+\end{enumerate}
+
+\subsection*{\Large Solución}
+
+\Large
+En la FES Acatlán se sabe que el alumnado es 50\% estudiantes de derecho, 20\% estudiantes del área de matemáticas y el 30\% de otras áreas. De igual manera se sabe que el porcentaje de alumnos irregulares es 7\%, 53\% y 15\% respectivamente.
+
+\begin{enumerate}
+    \item \textbf{¿Cuál es la probabilidad de ser irregular?}
+    
+    \textbf{Explicación:}  
+    La probabilidad total de ser irregular se calcula utilizando la fórmula de probabilidad total, que es:
+    
+    \[
+    P(\text{Irregular}) = P(\text{Irregular} \mid D) P(D) + P(\text{Irregular} \mid M) P(M) + P(\text{Irregular} \mid O) P(O)
+    \]
+    
+    Donde:
+    - \(P(\text{Irregular} \mid D) = 0.07\) es la probabilidad de ser irregular dado que es estudiante de derecho.
+    - \(P(\text{Irregular} \mid M) = 0.53\) es la probabilidad de ser irregular dado que es estudiante de matemáticas.
+    - \(P(\text{Irregular} \mid O) = 0.15\) es la probabilidad de ser irregular dado que es estudiante de otras áreas.
+    - \(P(D) = 0.50\), \(P(M) = 0.20\), y \(P(O) = 0.30\) son las probabilidades de ser estudiante de derecho, matemáticas y otras áreas, respectivamente.
+    
+    Sustituyendo los valores:
+    
+    \[
+    P(\text{Irregular}) = (0.07)(0.50) + (0.53)(0.20) + (0.15)(0.30)
+    \]
+    
+    Realizando las multiplicaciones:
+    
+    \[
+    P(\text{Irregular}) = 0.035 + 0.106 + 0.045 = 0.186
+    \]
+    
+    Entonces, la probabilidad de ser irregular es:
+    
+    \[
+    P(\text{Irregular}) = 0.186
+    \]
+
+    \item \textbf{Si se toma una muestra aleatoria de 100 personas, ¿cuántas serán irregulares?}
+    
+    \textbf{Explicación:}  
+    Sabemos que la probabilidad de ser irregular es \( P(\text{Irregular}) = 0.186 \). Entonces, si tomamos una muestra de 100 personas, la cantidad esperada de personas irregulares es:
+    
+    \[
+    \text{Número de irregulares} = 100 \times P(\text{Irregular}) = 100 \times 0.186 = 18.6
+    \]
+    
+    Como no podemos tener una fracción de persona, redondeamos a 19 personas. Por lo tanto, en una muestra de 100 personas, se espera que haya aproximadamente 19 personas irregulares.
+
+    \item \textbf{¿Cuál es la probabilidad de que un alumno irregular sea estudiante de derecho?}
+    
+    \textbf{Explicación:}  
+    Para resolver esta pregunta, utilizamos la fórmula de probabilidad condicional:
+    
+    \[
+    P(D \mid \text{Irregular}) = \frac{P(\text{Irregular} \mid D) P(D)}{P(\text{Irregular})}
+    \]
+    
+    Sabemos que:
+    - \( P(\text{Irregular} \mid D) = 0.07 \),
+    - \( P(D) = 0.50 \),
+    - \( P(\text{Irregular}) = 0.186 \).
+    
+    Sustituyendo estos valores en la fórmula, tenemos:
+    
+    \[
+    P(D \mid \text{Irregular}) = \frac{(0.07)(0.50)}{0.186} = \frac{0.035}{0.186} \approx 0.188
+    \]
+    
+    Entonces, la probabilidad de que un alumno irregular sea estudiante de derecho es aproximadamente 0.188, o 18.8\%.
+
+\end{enumerate}
+
+    \section*{\Large Problema 5}
+    \addcontentsline{toc}{section}{\Large Problema 5\\}
+
+\Large Demuestre que la intersección finita de $\sigma$ - álgebras es una $\sigma$ - álgebra, es decir, si $\mathcal{F}_{1}$, $\mathcal{F}_2$, $\dots$, $\mathcal{F}_{n}$ son $\sigma$ - álgebras, entonces;
+
+    \[\bigcap_{i = 1}^{n} \mathcal{F}_{i} \; \text{es una} \; \sigma \; \text{- álgebra.}\]
+
+\subsection*{\Large Solución}
+
+\Large
+Demuestre que la intersección finita de $\sigma$-álgebras es una $\sigma$-álgebra, es decir, si $\mathcal{F}_{1}$, $\mathcal{F}_2$, $\dots$, $\mathcal{F}_{n}$ son $\sigma$-álgebras, entonces:
+
+\[
+\bigcap_{i = 1}^{n} \mathcal{F}_{i} \; \text{es una} \; \sigma\text{-álgebra.}
+\]
+
+\textbf{Demostración:}
+
+Sea $\mathcal{F}_{1}, \mathcal{F}_{2}, \dots, \mathcal{F}_{n}$ una colección de $\sigma$-álgebras. Queremos demostrar que la intersección de estas $\sigma$-álgebras, es decir, el conjunto
+
+\[
+\mathcal{F} = \bigcap_{i = 1}^{n} \mathcal{F}_{i},
+\]
+
+es una $\sigma$-álgebra. Para ello, debemos verificar que cumple con las tres propiedades de una $\sigma$-álgebra:
+
+\begin{enumerate}
+    \item \textbf{Cerradura bajo complementos:}  
+    Debemos demostrar que si $A \in \mathcal{F}$, entonces $A^c \in \mathcal{F}$.
+    
+    Como $A \in \mathcal{F}$, esto implica que $A \in \mathcal{F}_i$ para todo $i = 1, 2, \dots, n$, ya que $A \in \bigcap_{i=1}^n \mathcal{F}_i$. Dado que cada $\mathcal{F}_i$ es una $\sigma$-álgebra, sabemos que $A^c \in \mathcal{F}_i$ para cada $i$. Por lo tanto, $A^c \in \bigcap_{i=1}^n \mathcal{F}_i = \mathcal{F}$, lo que demuestra que $\mathcal{F}$ es cerrado bajo complementos.
+    
+    \item \textbf{Cerradura bajo uniones numerables:}  
+    Debemos demostrar que si $\{A_k\}_{k=1}^{\infty}$ es una secuencia de conjuntos en $\mathcal{F}$, entonces $\bigcup_{k=1}^{\infty} A_k \in \mathcal{F}$.
+    
+    Si $A_k \in \mathcal{F}$ para todo $k$, entonces $A_k \in \mathcal{F}_i$ para todo $i = 1, 2, \dots, n$ y para todo $k$. Como cada $\mathcal{F}_i$ es una $\sigma$-álgebra, cada $\mathcal{F}_i$ es cerrado bajo uniones numerables, es decir, $\bigcup_{k=1}^{\infty} A_k \in \mathcal{F}_i$ para todo $i$. Por lo tanto, $\bigcup_{k=1}^{\infty} A_k \in \bigcap_{i=1}^n \mathcal{F}_i = \mathcal{F}$, lo que demuestra que $\mathcal{F}$ es cerrado bajo uniones numerables.
+    
+    \item \textbf{Contiene el espacio muestral:}  
+    Finalmente, debemos verificar que el espacio muestral $\Omega$ pertenece a $\mathcal{F}$. Dado que cada $\mathcal{F}_i$ es una $\sigma$-álgebra, sabemos que $\Omega \in \mathcal{F}_i$ para todo $i$. Entonces, $\Omega \in \bigcap_{i=1}^n \mathcal{F}_i = \mathcal{F}$, lo que demuestra que $\mathcal{F}$ contiene el espacio muestral.
+\end{enumerate}
+
+Como hemos verificado que $\mathcal{F}$ cumple con las tres propiedades de una $\sigma$-álgebra, concluimos que:
+
+\[
+\bigcap_{i = 1}^{n} \mathcal{F}_{i} \text{ es una } \sigma\text{-álgebra.}
+\]
+
+\hfill $\square$
+
+    \section*{\Large Problema 6}
+    \addcontentsline{toc}{section}{\Large Problema 6\\}
+
+    \Large Demuestre o proporcione un contraejemplo para las siguientes afirmaciones:
+
+\begin{enumerate}
+    \item Si $P(A) = 0$ entonces $A = \emptyset$.
+    \item Si $P(A) = 1$ entonces $A = \Omega$.
+\end{enumerate}
+
+\subsection*{\Large Solución}
+
+\Large
+Demuestre o proporcione un contraejemplo para las siguientes afirmaciones:
+
+\begin{enumerate}
+    \item \textbf{Si $P(A) = 0$ entonces $A = \emptyset$.}
+
+    \textbf{Contraejemplo:}  
+    No es cierto que si $P(A) = 0$ entonces $A = \emptyset$. La probabilidad de un conjunto $A$ ser 0 no implica necesariamente que $A$ sea el conjunto vacío. Un contraejemplo puede ser cualquier conjunto de probabilidad 0 dentro de un espacio muestral. 
+
+    Consideremos el espacio muestral $\Omega = [0,1]$ con una medida de probabilidad uniforme en el intervalo. Esto significa que la probabilidad de cualquier subintervalo de $[0,1]$ es igual a su longitud. Supongamos que $A$ es el conjunto de los números racionales dentro del intervalo $[0,1]$, denotado como $A = \mathbb{Q} \cap [0,1]$.
+
+    Aunque $A$ es un conjunto infinito (ya que contiene todos los números racionales entre 0 y 1), su medida de probabilidad es 0, ya que los números racionales tienen medida 0 en el espacio de los reales bajo la medida de Lebesgue. Sin embargo, $A \neq \emptyset$ ya que contiene infinitos elementos. Por lo tanto, el hecho de que $P(A) = 0$ no implica que $A$ sea el conjunto vacío.
+
+    \item \textbf{Si $P(A) = 1$ entonces $A = \Omega$.}
+
+    \textbf{Demostración:}  
+    Esta afirmación es verdadera. Si la probabilidad de un conjunto $A$ es 1, es decir, $P(A) = 1$, entonces $A$ debe ser igual al espacio muestral $\Omega$ o un subconjunto cuya probabilidad total sea 1.
+
+    Sabemos que si $P(A) = 1$, entonces $P(A^c) = 0$, ya que $P(\Omega) = 1$ y $P(A) + P(A^c) = P(\Omega)$. Si $P(A^c) = 0$, esto significa que el conjunto complementario de $A$ tiene probabilidad 0, es decir, $A^c$ es un conjunto de medida 0. 
+
+    Como el conjunto complementario de $A$ tiene medida 0, esto implica que $A$ debe ser igual al espacio muestral $\Omega$, ya que la medida de $\Omega$ es 1 y $A^c$ no tiene ninguna probabilidad positiva. Por lo tanto, $A = \Omega$ si $P(A) = 1$.
+
+\end{enumerate}
+
+\end{document}
